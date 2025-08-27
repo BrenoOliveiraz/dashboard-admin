@@ -17,6 +17,8 @@ export default function EntregasPage() {
     fetchData();
   }, []);
 
+  console.log(entregas)
+
   return (
     <div>
       <h2 className="text-2xl font-bold mb-4">Entregas Realizadas</h2>
