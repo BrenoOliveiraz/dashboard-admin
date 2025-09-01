@@ -12,10 +12,12 @@ export default function EntregasPage() {
     const fetchData = async () => {
       const querySnapshot = await getDocs(collection(db, "entregasRealizadas"));
       const data = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+      console.log("Entregas:", JSON.stringify(data, null, 2)); // 👈 aqui
       setEntregas(data);
     };
     fetchData();
   }, []);
+
 
   console.log(entregas)
 
