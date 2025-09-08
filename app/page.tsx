@@ -3,6 +3,7 @@ import ContadorEntregas from "@/components/ContadorEntregas";
 import Link from "next/link";
 import ContadorUsuarios from "@/components/ContadorUsuarios";
 import Image from "next/image";
+import ContadorTpafs from "@/components/ContadorTpafs";
 
 export default function DashboardPage() {
   return (
@@ -24,17 +25,21 @@ export default function DashboardPage() {
         </div>
 
         <div className="bg-white shadow rounded-xl p-6 cursor-pointer hover:bg-gray-100 transition">
-          <h3 className="text-lg font-semibold">Produtos</h3>
-          <p className="text-2xl font-bold">12</p>
+
+          <Link href='/tpafs'>
+
+            <h3 className="text-lg font-semibold">Tpafs</h3>
+            <ContadorTpafs />
+          </Link>
         </div>
 
         <UltimasEntregas />
         <Image
           src="/logo-conab.png"
           alt="Logo Conab"
-          width={300}   
-          height={300}  
-          className="justify-self-end self-center" 
+          width={300}
+          height={300}
+          className="justify-self-end self-center"
         />
 
 

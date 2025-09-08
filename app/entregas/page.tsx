@@ -42,7 +42,7 @@ export default function EntregasPage() {
         className="mb-4 px-4 py-2 border border-gray-300 rounded-md w-full max-w-md transition-all"
       />
 
-      <div className="grid gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
         <AnimatePresence mode="wait">
           {filteredEntregas.map((entrega) => (
             <motion.div
