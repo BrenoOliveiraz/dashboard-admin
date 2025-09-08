@@ -60,16 +60,7 @@ export default function EntregasPage() {
           ))}
         </AnimatePresence>
 
-        {filteredEntregas.length === 0 && (
-          <motion.p
-            className="text-gray-500"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.3 }}
-          >
-            Nenhuma entrega encontrada.
-          </motion.p>
-        )}
+
       </div>
     </div>
   );
