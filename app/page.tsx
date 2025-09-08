@@ -2,6 +2,7 @@ import UltimasEntregas from "@/components/UltimasEntregas";
 import ContadorEntregas from "@/components/ContadorEntregas";
 import Link from "next/link";
 import ContadorUsuarios from "@/components/ContadorUsuarios";
+import Image from "next/image";
 
 export default function DashboardPage() {
   return (
@@ -18,7 +19,7 @@ export default function DashboardPage() {
         <div className="bg-white shadow rounded-xl p-6 cursor-pointer hover:bg-gray-100 transition">
           <Link href="/usuarios">
             <h3 className="text-lg font-semibold">Usuários</h3>
-           <ContadorUsuarios />
+            <ContadorUsuarios />
           </Link>
         </div>
 
@@ -28,6 +29,15 @@ export default function DashboardPage() {
         </div>
 
         <UltimasEntregas />
+        <Image
+          src="/logo-conab.png"
+          alt="Logo Conab"
+          width={300}   
+          height={300}  
+          className="justify-self-end self-center" 
+        />
+
+
       </div>
     </div>
   );
