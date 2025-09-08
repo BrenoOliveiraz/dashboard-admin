@@ -7,7 +7,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="pt-BR">
       <body className="flex h-screen bg-gray-100">
-        {/* Sidebar fixa */}
+      
         <Navbar />
 
       
@@ -15,7 +15,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 
         <Header />
 
-          {/* Área da página */}
+
           <main className="p-6 overflow-y-auto">{children}</main>
         </div>
       </body>
