@@ -1,15 +1,25 @@
 "use client";
+
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
+import { BarChart, Truck, User, LineChart } from "lucide-react";
 
 export default function Navbar() {
   const pathname = usePathname();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return null; // Evita mismatch SSR/CSR
 
   const links = [
-    { href: "/", label: "Dashboard", icon: "📊" },
-    { href: "/entregas", label: "Entregas", icon: "🚚" },
-    { href: "/usuarios", label: "Usuários", icon: "👤" },
-    { href: "/graficos", label: "Gráficos", icon: "📈" },
+    { href: "/", label: "Dashboard", icon: <BarChart size={18} /> },
+    { href: "/entregas", label: "Entregas", icon: <Truck size={18} /> },
+    { href: "/usuarios", label: "Usuários", icon: <User size={18} /> },
+    { href: "/tpafs", label: "Tpafs", icon: <LineChart size={18} /> },
   ];
 
   return (
@@ -26,7 +36,7 @@ export default function Navbar() {
                 : "hover:bg-gray-100 text-gray-700"
             }`}
           >
-            <span>{link.icon}</span>
+            {link.icon}
             {link.label}
           </Link>
         ))}

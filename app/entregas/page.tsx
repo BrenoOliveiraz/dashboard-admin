@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 import CardEntrega from "@/components/CardEntrega";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function EntregasPage() {
   const [entregas, setEntregas] = useState<any[]>([]);
@@ -21,7 +22,6 @@ export default function EntregasPage() {
     fetchData();
   }, []);
 
-  
   const filteredEntregas = entregas.filter((entrega) => {
     const term = searchTerm.toLowerCase();
     return (
@@ -34,22 +34,41 @@ export default function EntregasPage() {
     <div>
       <h2 className="text-2xl font-bold mb-4">Entregas Realizadas</h2>
 
-
       <input
         type="text"
         placeholder="Buscar por CNPJ ou Número do TPAF"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
-        className="mb-4 px-4 py-2 border border-gray-300 rounded-md w-full max-w-md"
+        className="mb-4 px-4 py-2 border border-gray-300 rounded-md w-full max-w-md transition-all"
       />
 
-   
-      <div className="grid gap-4 cursor-pointer ">
-        {filteredEntregas.map((e) => (
-          <CardEntrega key={e.id} entrega={e} />
-        ))}
+      <div className="grid gap-4">
+        <AnimatePresence mode="wait">
+          {filteredEntregas.map((entrega) => (
+            <motion.div
+              key={entrega.id}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.3 }}
+            >
+              <CardEntrega
+                entrega={entrega}
+                codigoProjeto={entrega.codigoProjeto}
+              />
+            </motion.div>
+          ))}
+        </AnimatePresence>
+
         {filteredEntregas.length === 0 && (
-          <p className="text-gray-500">Nenhuma entrega encontrada.</p>
+          <motion.p
+            className="text-gray-500"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.3 }}
+          >
+            Nenhuma entrega encontrada.
+          </motion.p>
         )}
       </div>
     </div>
