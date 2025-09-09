@@ -10,7 +10,7 @@ interface UsuarioProps {
 
 export default function CardUsuario({ nome, email, cnpj, tipo }: UsuarioProps) {
   return (
-    <Card className="shadow-md rounded-2xl border border-gray-200 hover:bg-gray-100 cursor-pointer">
+    <Card className="h-full min-h-[200px] flex flex-col shadow-md rounded-2xl border border-gray-200 hover:bg-gray-100 cursor-pointer">
       <CardHeader>
         <CardTitle className="text-lg font-bold">{nome}</CardTitle>
       </CardHeader>
